@@ -1,33 +1,3 @@
-Skip to content
-Search or jump to…
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@Jezithyr 
-github
-/
-gitignore
-3.2k
-122k
-67.7k
-Code
-Pull requests
-305
-Actions
-Security
-Insights
-gitignore/UnrealEngine.gitignore
-@jayvdb
-jayvdb Revert "add the *.VC.db to unreal engine ignore"
-…
-Latest commit fcb1dbf on Jun 17, 2018
- History
- 11 contributors
-@samsheff@calben@vvolkgang@robipresotto@jayvdb@NuLL3rr0r@hzor3000@halbich@gagallo7@shiftkey@BGR360
-74 lines (58 sloc)  946 Bytes
-  
 # Visual Studio 2015 user specific files
 .vs/
 
