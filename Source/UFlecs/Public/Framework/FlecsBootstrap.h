@@ -14,6 +14,7 @@ class UFLECS_API AFlecsBootstrap : public AActor
 	AFlecsBootstrap();
 
 	protected:
+	UPROPERTY(EditAnywhere)
 	int worldIndex = 0;//use the default world for now
 	virtual void BeginPlay() override;
 	virtual void Bootstrap(flecs::world& ecs);
