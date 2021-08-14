@@ -4,7 +4,7 @@
 class FlecsRegContainer
 {
 public:
-	UNFLECS_API
+	UFLECS_API
     static TArray<void (*)(flecs::world&)>& GetFlecsRegs();
 };
 
