@@ -18,8 +18,12 @@ public:
 	virtual void Initialize(FSubsystemCollectionBase& Collection) override;
 	virtual void Deinitialize() override;
 
-	// Getting the Flecs world if we need it
-	flecs::world* GetEcsWorld() const;
+	// Getting the default ecs world if we need it
+	flecs::world* GetDefaultEcsWorld() const;
+	//get an ecs world by id
+	flecs::world* GetECSWorldById(int id) const;
+	int CreateECSWorld();
+	int GetECSWorldIndex(flecs::world* world);
 protected:
 	// UnrealSubsystem doesn't have a Tick function; instead
 	// we use `FTickerDelegate` 
@@ -27,7 +31,7 @@ protected:
 	FDelegateHandle OnTickHandle;
 
 	// UUnrealFlecsSubsystem contains a pointer to the current Flecs world
-	flecs::world* ECSWorld = nullptr;
+	TArray< flecs::world*> worlds;
 
 private:
 	//Our custom Tick function used by `FTickerDelegate`

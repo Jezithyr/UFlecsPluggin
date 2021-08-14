@@ -20,7 +20,7 @@ void AFlecsBootstrap::BeginPlay()
 	UGameInstance* gameInstance = UGameplayStatics::GetGameInstance(GetWorld());
 	UFlecsSubsystem* subSystem = gameInstance->GetSubsystem<UFlecsSubsystem>();
 
-	Bootstrap(*subSystem->GetEcsWorld());
+	Bootstrap(*subSystem->GetECSWorldById(worldIndex));
 	
 	Super::BeginPlay();
 }
