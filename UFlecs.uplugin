@@ -1,0 +1,29 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "UFlecs",
+	"Description": "Unreal Engine Implementation of the Flecs ECS framework",
+	"Category": "Other",
+	"CreatedBy": "Jesse  'Jez' Rougeau",
+	"CreatedByURL": "https://github.com/Jezithyr",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Modules": [
+			{
+			"Name": "FlecsLib",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		},
+		{
+			"Name": "UFlecs",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	]
+}
