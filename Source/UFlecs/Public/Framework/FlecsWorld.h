@@ -8,7 +8,7 @@
 #include "FlecsWorld.generated.h"
 
 /**
- * 
+ * Uobject wrapper for flecs worlds
  */
 UCLASS()
 class UFLECS_API UFlecsWorld : public UObject
