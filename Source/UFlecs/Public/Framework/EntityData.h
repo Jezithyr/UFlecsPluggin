@@ -10,10 +10,19 @@
  * 
  */
 USTRUCT()
-struct UFLECS_API FEntityData
+struct UFLECS_API FComponentGroup
 {
 GENERATED_BODY()
 public:
-	virtual void ReadComponents(flecs::entity* target){};
-	virtual void SetComponents(flecs::entity* target){};
+	virtual void ReadComponents(flecs::entity target) {};
+	virtual void SetComponents(flecs::entity target){};
+};
+
+UCLASS(Abstract)
+class UFLECS_API UComponentGroupClass : public UObject
+{
+	GENERATED_BODY()
+public:
+	virtual void ReadComponents(flecs::entity target) {};
+	virtual void SetComponents(flecs::entity target) {};
 };

@@ -8,3 +8,4 @@
 #include "Framework/FlecsRegistration.h"
 #include "Framework/FlecsSubsystem.h"
 #include "Framework/FlecsWorld.h"
+#include "Lib/UFlecsUtils.h"
