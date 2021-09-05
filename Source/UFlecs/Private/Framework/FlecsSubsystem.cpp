@@ -2,7 +2,7 @@
 
 
 #include "Framework/FlecsSubsystem.h"
-
+#include "Framework/UFlecsRegistration.h"
 void UFlecsSubsystem::Initialize(FSubsystemCollectionBase& Collection)
 {
 	OnTickDelegate = FTickerDelegate::CreateUObject(this, &UFlecsSubsystem::Tick);
@@ -10,6 +10,12 @@ void UFlecsSubsystem::Initialize(FSubsystemCollectionBase& Collection)
 
 	//Create the Flecs world immediately after initialization of Game Instance
 	CreateECSWorld();
+
+	auto& regs = UFlecsRegContainer::GetFlecsRegs();
+	for (auto reg: regs)
+	{
+		reg(*worlds[0]);
+	}
 
 	UE_LOG(LogTemp, Warning, TEXT("UUnrealFlecsSubsystem has started!"));
 
