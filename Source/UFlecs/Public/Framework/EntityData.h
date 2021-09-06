@@ -20,8 +20,8 @@ class UFLECS_API IHasComponentData
 {
 	GENERATED_BODY()
 public:
-	virtual void GetComponents(flecs::entity target) {};
-	virtual void SetComponents(flecs::entity target) {};
+	virtual void GetECSComponents(flecs::entity target) {};
+	virtual void SetECSComponents(flecs::entity target) {};
 };
 
 UINTERFACE(MinimalAPI)
@@ -33,7 +33,7 @@ class UFLECS_API IComponentReader
 {
 	GENERATED_BODY()
 public:
-	virtual void GetComponents(flecs::entity target) {};
+	virtual void GetECSComponents(flecs::entity target) {};
 };
 
 UINTERFACE(MinimalAPI)
@@ -45,5 +45,5 @@ class UFLECS_API IComponentWriter
 {
 	GENERATED_BODY()
 public:
-	virtual void SetComponents(flecs::entity target) {};
+	virtual void SetECSComponents(flecs::entity target) {};
 };
