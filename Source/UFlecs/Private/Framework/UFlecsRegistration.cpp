@@ -14,9 +14,9 @@ TMap<UStruct*, void (*)(flecs::entity&, FComponentUStruct&)>& UFlecsRegContainer
 	return instance;
 }
 
-TMap <UStruct*, FComponentUStruct* (*)(flecs::entity&)> & UFlecsRegContainer::GetFlecsGetters()
+TMap <UStruct*, const FComponentUStruct* (*)(flecs::entity&)> & UFlecsRegContainer::GetFlecsGetters()
 {
-	static TMap<UStruct*, FComponentUStruct* (*)(flecs::entity&)> instance;
+	static TMap<UStruct*, const FComponentUStruct* (*)(flecs::entity&)> instance;
 	return instance;
 }
 
@@ -26,9 +26,9 @@ TMap<FString, void (*)(flecs::entity&, ComponentStruct&)>& UFlecsRegContainer::G
 	return instance;
 }
 
-TMap <FString, ComponentStruct* (*)(flecs::entity&)>& UFlecsRegContainer::GetFlecsRawGetters()
+TMap <FString, const ComponentStruct* (*)(flecs::entity&)>& UFlecsRegContainer::GetFlecsRawGetters()
 {
-	static TMap<FString, ComponentStruct* (*)(flecs::entity&)> instance;
+	static TMap<FString, const ComponentStruct* (*)(flecs::entity&)> instance;
 	return instance;
 }
 

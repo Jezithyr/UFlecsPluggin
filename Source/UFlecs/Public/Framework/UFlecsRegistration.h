@@ -20,12 +20,12 @@ public:
 		//flecs component registration functions
 		static TArray<void (*)(flecs::world&)>& GetFlecsRegs();
 		static TMap<UStruct*, void (*)(flecs::entity&, FComponentUStruct&)>& GetFlecsSetters();
-		static TMap<UStruct*, FComponentUStruct* (*)(flecs::entity&)>& GetFlecsGetters();
+		static TMap<UStruct*, const FComponentUStruct* (*)(flecs::entity&)>& GetFlecsGetters();
 		static TMap<FString, void (*)(flecs::entity&, ComponentStruct&)>& GetFlecsRawSetters();
-		static TMap<FString, ComponentStruct* (*)(flecs::entity&)>& GetFlecsRawGetters();
+		static TMap<FString, const ComponentStruct* (*)(flecs::entity&)>& GetFlecsRawGetters();
 
 
-		static FComponentUStruct* GetComponent(UStruct* compType, flecs::entity& target)
+		static const FComponentUStruct* GetComponent(UStruct* compType, flecs::entity& target)
 		{
 			return GetFlecsGetters()[compType](target);
 		}
@@ -38,7 +38,7 @@ public:
 		}
 
 		//get a component struct by string
-		static ComponentStruct* GetComponent(FString compType, flecs::entity& target)
+		static const ComponentStruct* GetComponent(FString compType, flecs::entity& target)
 		{
 			return GetFlecsRawGetters()[compType](target);
 		}
@@ -87,14 +87,14 @@ class UFlecsComponentRegistration
 		regs.Add(func);
 
 		//register setter function
-		void (*setterFunc)(flecs::entity&, FComponentUStruct&);
+		void (*setterFunc)(flecs::entity&, FComponentUStruct*);
 		setterFunc = &FuncSetter;
-		setterUStructRegs.Add(T::StaticStruct(),setterFunc);
+		setterUStructRegs.Emplace(T::StaticStruct(),setterFunc);
 
 		//register getter function
-		FComponentUStruct* (*getterFunc)(flecs::entity&);
+		const FComponentUStruct* (*getterFunc)(flecs::entity&);
 		getterFunc = &FuncGetter;
-		getterUStructRegs.Add(T::StaticStruct(),getterFunc);
+		getterUStructRegs.Emplace(T::StaticStruct(),getterFunc);
 		return true;
 	}
 	static void FuncReg(flecs::world& InWorld)
@@ -102,14 +102,14 @@ class UFlecsComponentRegistration
 		InWorld.component<T>();
 		UE_LOG(LogTemp, Warning, TEXT("FlecsComponent %s is registered"), *Name);
 	}
-	static FComponentUStruct* FuncGetter(flecs::entity& target)
+	static const FComponentUStruct* FuncGetter(flecs::entity& target)
 	{
-		return target.get<T>();
+		return (const FComponentUStruct*)target.get<T>();
 	}
 	static void FuncSetter(flecs::entity& target, FComponentUStruct* component)
 	{
-		T* Cast<T>(component);
-		target.set<T>(*component);
+		T* temp = (T*)(component);
+		target.set<T>(*temp);
 	}
 };
 
