@@ -9,20 +9,41 @@
 /**
  * 
  */
-USTRUCT()
-struct UFLECS_API FComponentGroup
-{
-GENERATED_BODY()
-public:
-	virtual void ReadComponents(flecs::entity target) {};
-	virtual void SetComponents(flecs::entity target){};
+
+
+UINTERFACE(MinimalAPI)
+class UHasComponentData : public UInterface {
+	GENERATED_BODY()
 };
 
-UCLASS(Abstract)
-class UFLECS_API UComponentGroupClass : public UObject
+class UFLECS_API IHasComponentData
 {
 	GENERATED_BODY()
 public:
-	virtual void ReadComponents(flecs::entity target) {};
+	virtual void GetComponents(flecs::entity target) {};
+	virtual void SetComponents(flecs::entity target) {};
+};
+
+UINTERFACE(MinimalAPI)
+class UComponentReader : public UInterface {
+	GENERATED_BODY()
+};
+
+class UFLECS_API IComponentReader
+{
+	GENERATED_BODY()
+public:
+	virtual void GetComponents(flecs::entity target) {};
+};
+
+UINTERFACE(MinimalAPI)
+class UComponentWriter : public UInterface {
+	GENERATED_BODY()
+};
+
+class UFLECS_API IComponentWriter
+{
+	GENERATED_BODY()
+public:
 	virtual void SetComponents(flecs::entity target) {};
 };
