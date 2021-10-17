@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Flecs.h"
+#include "flecs.h"
 #include "CoreMinimal.h"
 #include "Framework/EntityData.h"
 #include "Framework/FlecsBootstrap.h"
