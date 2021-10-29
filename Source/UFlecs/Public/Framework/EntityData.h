@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "Flecs.h"
+#include "flecs.h"
 #include "CoreMinimal.h"
 #include "EntityData.generated.h"
 
